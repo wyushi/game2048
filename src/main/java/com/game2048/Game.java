@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class GameController {
+public class Game {
 
     private static final int BOARD_SIZE = 4;
 
     Tile[][] board;
     Random ranGenerator = new Random(new Date().getTime());
 
-    public GameController() {
+    public Game() {
         board = new Tile[BOARD_SIZE][BOARD_SIZE];
     }
 
@@ -148,19 +148,4 @@ public class GameController {
         return t;
     }
 
-    public void printBoard() {
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(i).append(" - ");
-            for (int j = 0; j < BOARD_SIZE; j++) {
-                if (board[i][j] != null) {
-                    sb.append(board[i][j].level);
-                } else {
-                    sb.append(".");
-                }
-                sb.append(" ");
-            }
-            System.out.println(sb.toString());
-        }
-    }
 }

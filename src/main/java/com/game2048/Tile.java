@@ -1,7 +1,7 @@
 package com.game2048;
 
 public class Tile {
-    int level = 1;
+    public int level = 1;
 
     public Tile() {}
 
