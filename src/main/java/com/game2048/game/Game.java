@@ -82,8 +82,7 @@ class Game {
         for (int i = 1; i < BOARD_SIZE; i++) {
             if (arr[i] != null && arr[i - 1] != null &&
                 arr[i].level == arr[i - 1].level) {
-                Tile t = arr[i - 1];
-                t.level++;
+                arr[i - 1] = new Tile(arr[i - 1].level + 1);
                 arr[i] = null;
                 i++;
             }
@@ -94,8 +93,7 @@ class Game {
         for (int i = BOARD_SIZE - 2; i >= 0; i--) {
             if (arr[i] != null && arr[i + 1] != null &&
                 arr[i].level == arr[i + 1].level) {
-                Tile t = arr[i + 1];
-                t.level++;
+                arr[i + 1] = new Tile(arr[i + 1].level + 1);
                 arr[i] = null;
                 i--;
             }
