@@ -1,8 +1,8 @@
-package com.game2048;
+package com.game2048.game;
 
-import com.game2048.actionReader.ActionReader;
-import com.game2048.actionReader.exceptions.InvalidActionException;
-import com.game2048.gameDisplay.GameDisplay;
+import com.game2048.display.GameDisplay;
+import com.game2048.reader.ActionReader;
+import com.game2048.reader.exceptions.InvalidActionException;
 
 public class GameManager {
 

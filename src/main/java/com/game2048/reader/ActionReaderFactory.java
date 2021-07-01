@@ -1,4 +1,4 @@
-package com.game2048.actionReader;
+package com.game2048.reader;
 
 public class ActionReaderFactory {
 

@@ -1,4 +1,4 @@
-package com.game2048;
+package com.game2048.game;
 
 public class Tile {
     public int level = 1;

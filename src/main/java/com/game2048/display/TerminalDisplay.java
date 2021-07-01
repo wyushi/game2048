@@ -1,6 +1,6 @@
-package com.game2048.gameDisplay;
+package com.game2048.display;
 
-import com.game2048.Tile;
+import com.game2048.game.Tile;
 
 class TerminalDisplay implements GameDisplay {
 

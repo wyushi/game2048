@@ -2,10 +2,11 @@ package com.game2048;
 
 import java.io.IOException;
 
-import com.game2048.actionReader.ActionReader;
-import com.game2048.actionReader.ActionReaderFactory;
-import com.game2048.gameDisplay.GameDisplay;
-import com.game2048.gameDisplay.GameDisplayFactory;
+import com.game2048.display.GameDisplay;
+import com.game2048.display.GameDisplayFactory;
+import com.game2048.game.GameManager;
+import com.game2048.reader.ActionReader;
+import com.game2048.reader.ActionReaderFactory;
 
 public class App {
 

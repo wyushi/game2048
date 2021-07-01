@@ -1,9 +1,9 @@
-package com.game2048.actionReader;
+package com.game2048.reader;
 
 import java.util.Scanner;
 
-import com.game2048.ActionType;
-import com.game2048.actionReader.exceptions.InvalidActionException;
+import com.game2048.game.ActionType;
+import com.game2048.reader.exceptions.InvalidActionException;
 
 class TerminalActionReader implements ActionReader {
 

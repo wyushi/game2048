@@ -1,4 +1,4 @@
-package com.game2048;
+package com.game2048.game;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class Game {
+class Game {
 
     private static final int BOARD_SIZE = 4;
 
