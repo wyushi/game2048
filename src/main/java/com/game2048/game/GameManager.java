@@ -28,29 +28,34 @@ public class GameManager {
     }
 
     public void run() {
+        boolean anyTileMoved = true;
         while (true) {
             try {
-                game.generateNewTile();
+                if (anyTileMoved) {
+                    game.generateNewTile();
+                }
                 display.render(copyBoard());
                 System.out.println();
 
                 ActionType at = actionReader.readNext();
                 System.out.println(at);
                 if (at == ActionType.UP) {
-                    game.slideTop();
+                    anyTileMoved = game.slideTop();
                 }
                 else if (at == ActionType.DOWN) {
-                    game.slideBottom();
+                    anyTileMoved = game.slideBottom();
                 }
                 else if (at == ActionType.LEFT) {
-                    game.slideLeft();
+                    anyTileMoved = game.slideLeft();
                 }
                 else if (at == ActionType.RIGHT) {
-                    game.slideRight();
+                    anyTileMoved = game.slideRight();
                 }
             } catch (InvalidActionException e) {
+                anyTileMoved = false;
                 System.out.println("Invalid key, use the arrow keys to play");
             } catch (Exception e) {
+                anyTileMoved = false;
                 e.printStackTrace();
             }
         }

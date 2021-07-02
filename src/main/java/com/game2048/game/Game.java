@@ -40,90 +40,110 @@ class Game {
         }
     }
 
-    public void slideLeft() {
+    public boolean slideLeft() {
+        boolean isMoved = false;
         for (int r = 0; r < BOARD_SIZE; r++) {
             Tile[] row = board[r];
-            moveToLeft(row);
-            mergeTowardLeft(row);
-            moveToLeft(row);
+            isMoved = moveToLeft(row) || isMoved;
+            isMoved = mergeTowardLeft(row) || isMoved;
+            isMoved = moveToLeft(row) || isMoved;
         }
+        return isMoved;
     }
 
-    public void slideRight() {
+    public boolean slideRight() {
+        boolean isMoved = false;
         for (int r = 0; r < BOARD_SIZE; r++) {
             Tile[] row = board[r];
-            moveToRight(row);
-            mergeTowardRight(row);
-            moveToRight(row);
+            isMoved = moveToRight(row) || isMoved;
+            isMoved = mergeTowardRight(row) || isMoved;
+            isMoved = moveToRight(row) || isMoved;
         }
+        return isMoved;
     }
 
-    public void slideTop() {
+    public boolean slideTop() {
+        boolean isMoved = false;
         for (int c = 0; c < BOARD_SIZE; c++) {
             Tile[] col = getCol(c);
-            moveToLeft(col);
-            mergeTowardLeft(col);
-            moveToLeft(col);
+            isMoved = moveToLeft(col) || isMoved;
+            isMoved = mergeTowardLeft(col) || isMoved;
+            isMoved = moveToLeft(col) || isMoved;
             setCol(c, col);
         }
+        return isMoved;
     }
 
-    public void slideBottom() {
+    public boolean slideBottom() {
+        boolean isMoved = false;
         for (int c = 0; c < BOARD_SIZE; c++) {
             Tile[] col = getCol(c);
-            moveToRight(col);
-            mergeTowardRight(col);
-            moveToRight(col);
+            isMoved = moveToRight(col) || isMoved;
+            isMoved = mergeTowardRight(col) || isMoved;
+            isMoved = moveToRight(col) || isMoved;
             setCol(c, col);
         }
+        return isMoved;
     }
 
-    public void mergeTowardLeft(Tile[] arr) {
+    public boolean mergeTowardLeft(Tile[] arr) {
+        boolean isMoved = false;
         for (int i = 1; i < BOARD_SIZE; i++) {
             if (arr[i] != null && arr[i - 1] != null &&
                 arr[i].level == arr[i - 1].level) {
                 arr[i - 1] = new Tile(arr[i - 1].level + 1);
                 arr[i] = null;
                 i++;
+                isMoved = true;
             }
         }
+        return isMoved;
     }
 
-    public void mergeTowardRight(Tile[] arr) {
+    public boolean mergeTowardRight(Tile[] arr) {
+        boolean isMoved = false;
         for (int i = BOARD_SIZE - 2; i >= 0; i--) {
             if (arr[i] != null && arr[i + 1] != null &&
                 arr[i].level == arr[i + 1].level) {
                 arr[i + 1] = new Tile(arr[i + 1].level + 1);
                 arr[i] = null;
                 i--;
+                isMoved = true;
             }
         }
+        return isMoved;
     }
 
-    public void moveToLeft(Tile[] arr) {
+    public boolean moveToLeft(Tile[] arr) {
+        boolean isMoved = false;
         int pos = 0;
         for (int i = 0; i < BOARD_SIZE; i++) {
             if (arr[i] != null) {
                 if (pos != i) {
                     arr[pos] = arr[i];
                     arr[i] = null;
+                    isMoved = true;
                 }
                 pos++;
             }
         }
+        return isMoved;
     }
 
-    public void moveToRight(Tile[] arr) {
+    public boolean moveToRight(Tile[] arr) {
+        boolean isMoved = false;
         int pos = BOARD_SIZE - 1;
         for (int i = BOARD_SIZE - 1; i >= 0; i--) {
             if (arr[i] != null) {
                 if (pos != i) {
                     arr[pos] = arr[i];
                     arr[i] = null;
+                    isMoved = true;
                 }
                 pos--;
             }
         }
+        return isMoved;
     }
 
 
