@@ -16,11 +16,22 @@ public class GameManager {
         this.game = new Game();
     }
 
+    private Tile[][] copyBoard() {
+        Tile[][] board = new Tile[game.board.length][];
+        for (int i = 0; i < game.board.length; i++) {
+            board[i] = new Tile[game.board[i].length];
+            for (int j = 0; j < game.board[i].length; j++) {
+                board[i][j] = game.board[i][j];
+            }
+        }
+        return board;
+    }
+
     public void run() {
         while (true) {
             try {
                 game.generateNewTile();
-                display.render(game.board);
+                display.render(copyBoard());
                 System.out.println();
 
                 ActionType at = actionReader.readNext();
